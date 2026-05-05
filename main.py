@@ -14,13 +14,13 @@ while True:
     # Run detection
     results = model(frame)
 
-    person_count = 0  # counter
+    person_count = 0
 
     for *box, conf, cls in results.xyxy[0]:
         label = model.names[int(cls)]
 
-        # Only detect humans
-        if label == 'person':
+        # ✅ Confidence filter added here
+        if label == 'person' and conf > 0.5:
             person_count += 1
 
             x1, y1, x2, y2 = map(int, box)
@@ -28,11 +28,11 @@ while True:
             # Draw box
             cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
 
-            # Label
+            # Show label + confidence
             cv2.putText(frame, f'Person {conf:.2f}', (x1, y1-10),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0,255,0), 2)
 
-    # Show count on screen
+    # Show people count
     cv2.putText(frame, f'People Count: {person_count}', (20, 40),
                 cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
 
