@@ -1,21 +1,22 @@
-# Human Detection System 👁️
+# Human Detection System 👁️📧
 
-## 📌 Description
+## 📌 About the Project
 
-This is a simple real-time human detection project that I built using Python and computer vision.
-The system uses my laptop webcam to detect people and draw a green bounding box around them.
+This is a simple real-time human detection project that I created using Python.
+The system uses my laptop webcam to detect people and draw a green box around them.
 
-The goal of this project is to understand how AI-based object detection works in real-time.
+I also added an extra feature where the system sends an email with a screenshot whenever a person is detected (every 30 seconds).
 
 ---
 
 ## 🚀 Features
 
 * Detects humans in real-time
-* Works using laptop webcam
+* Uses laptop webcam
 * Draws bounding box around detected person
 * Shows number of people detected
-* Uses confidence filtering for better accuracy
+* Filters low-confidence detections
+* Sends email with image when a person is detected
 
 ---
 
@@ -23,14 +24,15 @@ The goal of this project is to understand how AI-based object detection works in
 
 * Python
 * OpenCV
-* YOLO (object detection model)
+* YOLOv5
 * PyTorch
+* SMTP (for sending email)
 
 ---
 
 ## ▶️ How to Run
 
-1. Install required libraries:
+1. Install all required libraries:
 
    ```
    pip install -r requirements.txt
@@ -44,27 +46,41 @@ The goal of this project is to understand how AI-based object detection works in
 
 ---
 
+## ⚙️ Email Setup
+
+Before running, update your email details in the code:
+
+```id="setup"
+sender_email = "your_email@gmail.com"
+receiver_email = "your_email@gmail.com"
+password = "your_app_password"
+```
+
+Note: Use Gmail App Password (not your normal password).
+
+---
+
 ## 📷 Output
 
-* Opens webcam
-* Detects humans
-* Displays bounding boxes
-* Shows people count
+* Webcam will open
+* Humans will be detected with a green box
+* People count will be shown
+* Email will be sent with screenshot when a person is detected
 
 ---
 
 ## 📚 What I Learned
 
 * Basics of computer vision
-* How YOLO model works
+* How YOLO works for object detection
 * Real-time video processing using OpenCV
-* Improving accuracy using confidence filtering
+* Sending emails using Python
 
 ---
 
 ## 🔮 Future Improvements
 
-* Add alert system (email/sound)
+* Add sound alert
 * Improve detection accuracy
 * Convert into web application
 
